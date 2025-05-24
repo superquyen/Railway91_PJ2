@@ -1,0 +1,26 @@
+package com.data.req;
+import lombok.Data;
+import jakarta.validation.constraints.*;
+import java.time.LocalDate;
+
+@Data
+public class AccountCreateReq {
+
+    @NotBlank(message = "Không được để tên user trống")
+    private String username;
+    @NotBlank(message = "không được để trống password")
+    private String password;
+    @Email(message = "Email không đúng")
+    private String email;
+    @PastOrPresent
+    private LocalDate createDate;
+    @PastOrPresent
+    private LocalDate updateDate;
+    @Past
+    private LocalDate birthDay;
+    @Size(max = 100, message = "địa chỉ không được để dài quá 100 ký tự")
+    private String address;
+    private String role;
+
+
+}
