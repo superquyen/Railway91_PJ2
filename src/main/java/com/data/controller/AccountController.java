@@ -6,12 +6,14 @@ import com.data.service.AccountService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
-@RestController
+
 @Validated
 @Controller
 public class AccountController {
@@ -58,4 +60,15 @@ public class AccountController {
             return ResponseEntity.badRequest().body("Khong tim thay account");
         }
     }
+    @GetMapping("account_list")
+    public String getAccounts(Model model){
+        List<Account>accounts = accountService.getAll();
+        model.addAttribute("accounts", accounts);
+        accounts.forEach(obj->{
+            System.out.println(obj.getId());
+            System.out.println(obj.getUsername());
+        });
+        return "account_list";
+    }
+
 }

@@ -20,4 +20,13 @@ public class Course {
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     @ToString.Exclude
     private List<Lesson>lessons;
+    @ManyToMany
+    @JoinTable(name = "Account_Course",
+    joinColumns = @JoinColumn(name = "course_id"),
+    inverseJoinColumns = @JoinColumn(name = "account_id"))
+    private List<Account>accounts;
+    @ManyToOne
+    @JoinColumn(name = "certificate_id")
+    @ToString.Exclude
+    private Certificate certificate;
 }

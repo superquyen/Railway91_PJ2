@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2> List Account</h2>
+<h3>Count: <span th:text="${accounts.size()}"></span></h3>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>username</th>
+                <th>password</th>
+                <th>email</th>
+                <th>createDate</th>
+                <th>updateDate</th>
+                <th>birthDay</th>
+                <th>address</th>
+                <th>role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="obj : ${accounts}">
+
+            <td th:text="${obj.id}">Id</td>
+            <td th:text="${obj.username}">username</td>
+            <td >*****</td>
+            <td th:text="${obj.email}">email</td>
+            <td th:text="${obj.createDate}">createDate</td>
+            <td th:text="${obj.updateDate}">updateDate</td>
+            <td th:text="${obj.birthDay}">birthDay</td>
+            <td th:text="${obj.address}">address</td>
+            <td th:text="${obj.role}">role</td>
+            </tr>
+            </tbody>
+        </table>
+</body>
+</html>

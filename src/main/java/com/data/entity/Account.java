@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,4 +21,6 @@ public class Account {
     private LocalDate birthDay;
     private String address;
     private String role;
+    @ManyToMany(mappedBy = "accounts")
+    private List <Course> courses;
 }

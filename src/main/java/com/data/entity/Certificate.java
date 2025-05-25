@@ -4,19 +4,18 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table
-@ToString
-public class Lesson {
+public class Certificate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String lessonName;
-    private int soGio;
-    private String moTa;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private String name;
+    @OneToMany(mappedBy = "certificate", fetch = FetchType.LAZY)
     @ToString.Exclude
-    @JoinColumn(name="course_id")
-    private Course course;
+    public List<Course>courses;
+
 }
