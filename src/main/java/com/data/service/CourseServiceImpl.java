@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,6 +48,11 @@ public class CourseServiceImpl implements CourseService{
         } else {
             throw new IllegalArgumentException("Course cannot be null");
         }
+    }
+
+    @Override
+    public List<Course> findAllById(List<Integer> courseId) {
+        return courseRepository.findAllById(courseId);
     }
 
 }

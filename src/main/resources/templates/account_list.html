@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css} "/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.4/css/all.css} "/>
+<script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h2> List Account</h2>
+<h2> QUẢN LÝ HỌC VIÊN</h2>
 <h3>Count: <span th:text="${accounts.size()}"></span></h3>
-        <table border="1">
+        <table class="table table-hover table-striped-columns table-bordered">
             <thead>
             <tr>
                 <th>Id</th>
@@ -19,12 +22,13 @@
                 <th>birthDay</th>
                 <th>address</th>
                 <th>role</th>
+                <th>Course Name</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="obj : ${accounts}">
-
-            <td th:text="${obj.id}">Id</td>
+                <td th:text="${obj.id}">Id</td>
             <td th:text="${obj.username}">username</td>
             <td >*****</td>
             <td th:text="${obj.email}">email</td>
@@ -33,6 +37,7 @@
             <td th:text="${obj.birthDay}">birthDay</td>
             <td th:text="${obj.address}">address</td>
             <td th:text="${obj.role}">role</td>
+                <td th:text="${obj.courseName}">Course </td>
             </tr>
             </tbody>
         </table>

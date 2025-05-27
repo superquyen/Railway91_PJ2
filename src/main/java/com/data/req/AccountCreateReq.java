@@ -1,7 +1,9 @@
 package com.data.req;
+import com.data.entity.Course;
 import lombok.Data;
 import jakarta.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class AccountCreateReq {
@@ -21,6 +23,7 @@ public class AccountCreateReq {
     @Size(max = 100, message = "địa chỉ không được để dài quá 100 ký tự")
     private String address;
     private String role;
+    private List<Integer> courseId;
 
 
 }

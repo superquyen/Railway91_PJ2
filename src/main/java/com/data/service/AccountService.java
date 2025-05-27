@@ -2,6 +2,8 @@ package com.data.service;
 
 
 import com.data.entity.Account;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -16,4 +18,10 @@ public interface AccountService extends UserDetailsService {
     void save(Account account);
 
     Optional<Account> findById(Integer id);
+
+    Account getAccountByUsername(String username);
+
+    Page<Account> findAll(Pageable pageable);
+
+    void deleteAccountById(int id);
 }

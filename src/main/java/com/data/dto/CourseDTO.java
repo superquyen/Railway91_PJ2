@@ -11,4 +11,5 @@ public class CourseDTO {
     private int soGio;
     private int soBuoi;
     private List<LessonCourseDTO>lessons;
+    private List<AccountDTO>accountDTOS;
 }

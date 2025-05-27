@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Data
 @Table
+@ToString
 public class Certificate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

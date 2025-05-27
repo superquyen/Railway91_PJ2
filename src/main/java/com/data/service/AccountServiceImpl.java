@@ -2,6 +2,9 @@ package com.data.service;
 
 import com.data.entity.Account;
 import com.data.repository.AccountRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -52,4 +55,18 @@ public class AccountServiceImpl implements AccountService{
         return new User(email, account.getPassword(), AuthorityUtils.createAuthorityList(account.getRole()));
     }
 
+    public Account getAccountByUsername(String username) {
+        return accountRepository.findByUsername(username).orElse(null);
+    }
+
+    @Override
+    public Page<Account> findAll(Pageable pageable) {
+        return accountRepository.findAll(pageable);
+    }
+
+    @Override
+    @Transactional
+    public void deleteAccountById(int id) {
+        accountRepository.deleteAccountById(id);
+    }
 }

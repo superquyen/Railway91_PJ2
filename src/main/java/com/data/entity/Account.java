@@ -2,6 +2,7 @@ package com.data.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table
+@ToString
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +23,13 @@ public class Account {
     private LocalDate birthDay;
     private String address;
     private String role;
-    @ManyToMany(mappedBy = "accounts")
-    private List <Course> courses;
+    @ManyToMany
+    @JoinTable(
+            name = "account_course",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    @ToString.Exclude
+    private List<Course> courses;
+
 }
